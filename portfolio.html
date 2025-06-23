@@ -62,13 +62,13 @@
     <header class="header-area style-3">
         <div class="container-fluid d-flex flex-nowrap align-items-center justify-content-between">
             <div class="company-logo">
-                <a href="index.html" class="logo-dark"><img alt="image" class="img-fluid" src="assets/img/header-logo.svg"></a>
-                <a href="index.html" class="logo-light"><img alt="image" class="img-fluid" src="assets/img/header-logo-white.svg"></a>
+                <a href="/" class="logo-dark"><img alt="image" class="img-fluid" src="assets/img/header-logo.svg"></a>
+                <a href="/" class="logo-light"><img alt="image" class="img-fluid" src="assets/img/header-logo-white.svg"></a>
             </div>
             <div class="menu-wrap">
                 <div class="main-menu">
                     <div class="mobile-logo-area d-lg-none d-flex align-items-center justify-content-between">
-                        <a href="index.html" class="mobile-logo-wrap">
+                        <a href="/" class="mobile-logo-wrap">
                             <img alt="image" class="img-fluid light" src="assets/img/header-logo.svg">
                             <img alt="image" class="img-fluid dark" src="assets/img/header-logo-white.svg">
                         </a>

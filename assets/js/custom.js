@@ -1547,7 +1547,7 @@
 
     const homeEl = document.createElement('li');
     homeEl.classList.add('single-menu-item', 'position-inherit', activeEl === 'index' ? 'active' : 'c');
-    homeEl.innerHTML = '<a href="index.html">Home</a>';
+    homeEl.innerHTML = '<a href="/">Home</a>';
     menuList.appendChild(homeEl);
     
     const ourServicesEl = document.createElement('li');
