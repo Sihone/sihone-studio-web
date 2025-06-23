@@ -26,7 +26,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <!-- Title -->
     <title>Contact  | Sihone Studio</title>
-    <link rel="icon" href="assets/img/favicon.png" type="image/gif" sizes="20x20">
+    <link rel="icon" href="assets/img/fav-icon.svg" type="image/gif" sizes="20x20">
 </head>
 
 <body class="tt-magic-cursor digital-agency">
