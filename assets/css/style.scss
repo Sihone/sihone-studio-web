@@ -1,5 +1,5 @@
 /*===========================
-Project Name: Mortar - IT Startup & Digital Agency Template.
+Project Name: Sihone Studio
 Author: Egens Lab --> (https://www.egenslab.com/)
 Support: https://www.account.egenslab.com/
 Developer: Abid Hossain Chowdhury --> hello@egenslab.com
@@ -2158,7 +2158,7 @@ header.style-1 {
     .company-logo{
       img{
         @include lg-device(){
-          width: 130px;
+         height: 29px;
         }
       }
       .logo-dark{
@@ -3276,7 +3276,7 @@ header.style-1 {
   .mobile-logo-area {
     .mobile-logo-wrap {
       img {
-        width: 130px;
+       height: 29px;
 
         &.dark {
           display: none;
@@ -3530,7 +3530,7 @@ header.style-2 {
     .company-logo{
       img{
         @include lg-device(){
-          width: 130px;
+         height: 29px;
         }
       }
       .logo-dark{
@@ -4655,7 +4655,7 @@ header.style-2 {
   .mobile-logo-area {
     .mobile-logo-wrap {
       img {
-        width: 130px;
+       height: 29px;
 
         &.dark {
           display: none;
@@ -4909,12 +4909,12 @@ header.style-3 {
   }
   .company-logo{
     img{
-      width: 142px;
+      height: 32px;
       @include lg-device(){
-        width: 130px;
+       height: 29px;
       }
       @include sm-down-device(){
-        width: 130px;
+       height: 29px;
       }
     }
     .logo-dark{
@@ -5961,7 +5961,7 @@ header.style-3 {
   .mobile-logo-area {
     .mobile-logo-wrap {
       img {
-        width: 130px;
+       height: 29px;
 
         &.dark {
           display: none;
@@ -7441,7 +7441,7 @@ header.style-4 {
   .mobile-logo-area {
     .mobile-logo-wrap {
       img {
-        width: 130px;
+       height: 29px;
 
         &.dark {
           display: none;
@@ -8959,7 +8959,7 @@ header.style-5 {
   .mobile-logo-area {
     .mobile-logo-wrap {
       img {
-        width: 130px;
+       height: 29px;
 
         &.dark {
           display: none;
@@ -10404,7 +10404,7 @@ header.style-6 {
   .mobile-logo-area {
     .mobile-logo-wrap {
       img {
-        width: 130px;
+       height: 29px;
 
         &.dark {
           display: none;
@@ -10668,12 +10668,12 @@ header.style-7{
   }
   .company-logo{
     img{
-      width: 142px;
+      height: 32px;
       @include lg-device(){
-        width: 130px;
+       height: 29px;
       }
       @include lg-down-device(){
-        width: 135px;
+       height: 29px;
       }
     }
   }
@@ -11707,7 +11707,7 @@ header.style-7{
           img{
             width: 144px;
             @include xl-down-device(){
-              width: 135px;
+             height: 29px;
             }
             @include sm-down-device(){
               width: 125px;
