@@ -1,5 +1,7 @@
 (function ($) {
 	"use strict";
+  
+  const language = localStorage.getItem('language') || navigator.language.split('-')[0] || 'en';  
 
 	$('.sidebar-button').on("click", function () {
 		$(this).toggleClass('active');
@@ -604,9 +606,9 @@
     });
 	
 	// niceSelect
-	if ($('select').length) {
-		$("select").niceSelect();
-	}
+	// if ($('select').length) {
+	// 	$("select").niceSelect();
+	// }
 
 	//Quantity Increment
 	$(".quantity__minus").on("click", function (e) {
@@ -1540,20 +1542,21 @@
   
   function loadMenuItems() {
     const activeEl = window.location.pathname.split('/').pop().split('.')[0] || 'index';
+    const activeElExt = window.location.pathname.split('/').pop().split('.')[1] || 'html';
     const menuList = document.querySelector('.menu-list');
     const isServicePage = activeEl === 'services' || activeEl === 'service-web' || activeEl === 'service-marketing' || activeEl === 'service-incubator' || activeEl === 'service-creator'; 
-
+    
     menuList.innerHTML = '';
 
     const homeEl = document.createElement('li');
     homeEl.classList.add('single-menu-item', 'position-inherit', activeEl === 'index' ? 'active' : 'c');
-    homeEl.innerHTML = '<a href="/">Home</a>';
+    homeEl.innerHTML = '<a href="/' + language + '/">' + (language === 'en' ? 'Home' : 'Accueil') + '</a>';
     menuList.appendChild(homeEl);
     
     const ourServicesEl = document.createElement('li');
     ourServicesEl.classList.add('menu-item-has-children', isServicePage ? 'active' : 'c');
     ourServicesEl.innerHTML = `
-      <a href="services.html" class="drop-down">Our Services</a>
+      <a href="services.html" class="drop-down">` + (language === 'en' ? 'Our Services' : 'Nos Services') + `</a>
       <i class="bi bi-plus dropdown-icon"></i>
       `;
     const ourServicesElUl = document.createElement('ul');
@@ -1563,22 +1566,22 @@
     
     const web = document.createElement('li');
     web.classList.add(activeEl === 'service-web' ? 'active' : 'c');
-    web.innerHTML = '<a href="service-web.html">Web Apps & Automation</a>';
+    web.innerHTML = '<a href="service-web.html">' + (language === 'en' ? 'Web Apps & Automation' : 'Applications Web & Automation') + '</a>';
     ourServicesElUl.appendChild(web);
     
     const marketing = document.createElement('li');
     marketing.classList.add(activeEl === 'service-marketing' ? 'active' : 'c');
-    marketing.innerHTML = '<a href="service-marketing.html">Digital Marketing</a>';
+    marketing.innerHTML = '<a href="service-marketing.html">' + (language === 'en' ? 'Digital Marketing' : 'Marketing Digital') + '</a>';
     ourServicesElUl.appendChild(marketing);
     
     const ai = document.createElement('li');
     ai.classList.add(activeEl === 'service-incubator' ? 'active' : 'c');
-    ai.innerHTML = '<a href="service-incubator.html">Tech Hub Incubator</a>';
+    ai.innerHTML = '<a href="service-incubator.html">' + (language === 'en' ? 'Tech Hub Incubator' : 'Incubateur Tech Hub') + '</a>';
     ourServicesElUl.appendChild(ai);
     
     const creator = document.createElement('li');
     creator.classList.add(activeEl === 'service-creator' ? 'active' : 'c');
-    creator.innerHTML = '<a href="service-creator.html">Creator Management</a>';
+    creator.innerHTML = '<a href="service-creator.html">' + (language === 'en' ? 'Creator Management' : 'Gestion du Créateur') + '</a>';
     ourServicesElUl.appendChild(creator);
     
     // const ourPortfolioEl = document.createElement('li');
@@ -1588,8 +1591,25 @@
     
     const aboutUsEl = document.createElement('li');
     aboutUsEl.classList.add('single-menu-item', 'position-inherit', activeEl === 'about' ? 'active' : 'c');
-    aboutUsEl.innerHTML = '<a href="about.html">About Us</a>';
+    aboutUsEl.innerHTML = '<a href="about.html">' + (language === 'en' ? 'About Us' : 'À Propos') + '</a>';
     menuList.appendChild(aboutUsEl);
+    
+    const languageEl = document.createElement('li');
+    languageEl.classList.add('single-menu-item', 'position-inherit', activeEl === 'language' ? 'active' : 'c');
+    menuList.appendChild(languageEl);
+    const langSelect = document.createElement('select');
+    langSelect.classList.add('language-select');
+    langSelect.innerHTML = `
+      <option value="en" `+ (language === 'en' ? 'selected' : '') +`>English</option>
+      <option value="fr" `+ (language === 'fr' ? 'selected' : '') +`>Français</option>`;
+    languageEl.appendChild(langSelect);
+    const page = activeEl === 'index' ? '' : activeEl + '.' + activeElExt;
+    langSelect.addEventListener('change', function() {
+      const selectedLanguage = this.value;
+      localStorage.setItem('language', selectedLanguage);
+      window.location.href = `/${selectedLanguage}/${page}`;
+    });
+    
   }
 
   function getLastPartOfUrl(url) {
@@ -1602,19 +1622,19 @@
 
   function loadFooter() {
     const footer = document.querySelector('.footer-section');
-    const footerTemplate = `
+    const footerTemplateEn = `
       <div class="container">
               <div class="footer-menu-wrap">
                   <div class="row">
                       <div class="col-lg-3">
                           <div class="company-logo-and-location-area">
                               <div class="company-logo-area">
-                                  <img src="assets/img/footer-logo3.svg" alt="">
+                                  <img src="../assets/img/footer-logo3.svg" alt="">
                               </div>
                               <ul class="contact-list contact-list-left">
                                       <li class="single-contact">
                                           <div class="icon">
-                                              <img src="assets/img/home1/icon/contact-mail-icon.svg" alt="">
+                                              <img src="../assets/img/home1/icon/contact-mail-icon.svg" alt="">
                                           </div>
                                           <div class="content">
                                               <span>Send Us Mail</span>
@@ -1623,7 +1643,7 @@
                                       </li>
                                       <li class="single-contact">
                                           <div class="icon">
-                                              <img src="assets/img/home1/icon/contact-whatsapp-icon.svg" alt="">
+                                              <img src="../assets/img/home1/icon/contact-whatsapp-icon.svg" alt="">
                                           </div>
                                           <div class="content">
                                               <span>WhatsApp / Phone</span>
@@ -1646,7 +1666,7 @@
                                               <li><a href="about.html">About us</a></li>
                                               <li><a href="services.html">Our Services</a></li>
                                               <li><a href="https://www.linkedin.com/company/sihonestudio/jobs/" target="_blank">Careers <span>Hiring</span></a></li>
-                                              <li><a href="contact.php">Contact Us</a></li>
+                                              <li><a href="contact.html">Contact Us</a></li>
                                           </ul>
                                       </div>
                                   </div>
@@ -1708,7 +1728,109 @@
                   </div>
               </div>
           </div>`;
-    footer.innerHTML = footerTemplate;
+    
+    const footerTemplateFr = `
+      <div class="container">
+        <div class="footer-menu-wrap">
+          <div class="row">
+            <div class="col-lg-3">
+              <div class="company-logo-and-location-area">
+                <div class="company-logo-area">
+                  <img src="../assets/img/footer-logo3.svg" alt="">
+                </div>
+                <ul class="contact-list contact-list-left">
+                  <li class="single-contact">
+                    <div class="icon">
+                      <img src="../assets/img/home1/icon/contact-mail-icon.svg" alt="">
+                    </div>
+                    <div class="content">
+                      <span>Envoyez-nous un e-mail</span>
+                      <a href="mailto:contact@sihonestudio.com">contact@sihonestudio.com</a>
+                    </div>
+                  </li>
+                  <li class="single-contact">
+                    <div class="icon">
+                      <img src="../assets/img/home1/icon/contact-whatsapp-icon.svg" alt="">
+                    </div>
+                    <div class="content">
+                      <span>WhatsApp / Téléphone</span>
+                      <a href="tel:+16134248006">+1 (613) 424-8006</a><br>
+                      <a href="tel:+237696509794">+237 696 509 794</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-lg-9">
+              <div class="footer-menu">
+                <div class="row gy-5">
+                  <div class="col-lg-3 col-md-3 col-sm-6">
+                    <div class="footer-widget">
+                      <div class="widget-title">
+                        <h3>Entreprise</h3>
+                      </div>
+                      <ul class="widget-list">
+                        <li><a href="about.html">À propos de nous</a></li>
+                        <li><a href="services.html">Nos Services</a></li>
+                        <li><a href="https://www.linkedin.com/company/sihonestudio/jobs/" target="_blank">Carrières <span>Recrutement</span></a></li>
+                        <li><a href="contact.html">Contactez-nous</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-4 col-sm-6 d-flex justify-content-lg-center">
+                    <div class="footer-widget">
+                      <div class="widget-title">
+                        <h3>Famille Sihone</h3>
+                      </div>
+                      <ul class="widget-list">
+                        <li><a>Primetec Académie</a></li>
+                        <li><a>Primetec Knowledge Hub</a></li>
+                        <li><a>Primetec Fondation</a></li>
+                        <li><a>La Chandele</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                  <div class="col-lg-5 col-md-5 d-flex justify-content-lg-end">
+                    <div class="newsletter-area">
+                      <h3>Bulletin</h3>
+                      <form class="newsletter-form" action="https://magic.beehiiv.com/v1/cc23babf-cd19-4bae-8b61-c47a7c8397ec" method="GET" target="_blank">
+                        <input type="email" name="email" placeholder="Courriel">
+                        <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M17.9597 0.771505C18.0006 0.669287 18.0107 0.557308 17.9885 0.449451C17.9664 0.341594 17.9131 0.242601 17.8353 0.164747C17.7574 0.0868923 17.6584 0.033599 17.5506 0.0114739C17.4427 -0.0106512 17.3307 -0.000635146 17.2285 0.0402804L0.863689 6.58643H0.862564L0.354081 6.78892C0.257774 6.82734 0.173959 6.89163 0.111895 6.97469C0.0498308 7.05775 0.0119333 7.15635 0.00238854 7.25959C-0.00715624 7.36284 0.0120231 7.46671 0.0578081 7.55974C0.103593 7.65278 0.174202 7.73134 0.261834 7.78676L0.723068 8.07925L0.724193 8.0815L6.34337 11.6566L9.9185 17.2758L9.92075 17.2781L10.2132 17.7393C10.2688 17.8266 10.3474 17.8968 10.4404 17.9423C10.5334 17.9878 10.6371 18.0068 10.7401 17.9972C10.8432 17.9875 10.9416 17.9496 11.0245 17.8876C11.1073 17.8257 11.1715 17.742 11.21 17.6459L17.9597 0.771505ZM15.8977 2.89768L7.46721 11.3281L7.22534 10.9479C7.18103 10.8781 7.12188 10.819 7.0521 10.7747L6.67186 10.5328L15.1023 2.10233L16.4275 1.57248L15.8988 2.89768H15.8977Z"/>
+                        </svg>
+                      </form>
+                      <div class="social-area">
+                        <h5>Restons connectés</h5>
+                        <ul class="social-list">
+                          <li><a href="https://www.facebook.com/SihoneStudio/" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                          <li><a href="https://x.com/sihonestudio" target="_blank"><i class="bi bi-twitter-x"></i></a></li>
+                          <li><a href="https://www.linkedin.com/company/sihonestudio" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                          <li><a href="https://www.instagram.com/sihonestudio" target="_blank"><i class='bx bxl-instagram-alt'></i></a></li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <div class="copyright-and-social-area">
+            <p>Copyright © 2025 <a href="https://sihonestudio.com/">Sihone Studio</a> | Tous droits réservés.</p>
+            <div class="terms-condition">
+              <p><a href="policy.html">Politique, Conditions générales</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    `;
+    footer.innerHTML = language === 'fr' ? footerTemplateFr : footerTemplateEn;
   }
 
   loadMenuItems();
